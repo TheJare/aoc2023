@@ -211,6 +211,6 @@ offset_bottom = 117.0
 mouse_filter = 1
 text = "result 2"
 
-[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button1" to="." method="go_to_day" binds= [0]]
-[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button2" to="." method="go_to_day" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button1" to="." method="go_to_day" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button2" to="." method="go_to_day" binds= [2]]
 [connection signal="pressed" from="CanvasLayer/CanvasGroup/DayUI/Panel/Button" to="." method="go_to_main"]

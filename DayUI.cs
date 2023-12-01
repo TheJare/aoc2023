@@ -40,9 +40,10 @@ public partial class DayUI : Control
 
     public void RunDay(int day)
     {
+        string inputfile = $"inputs/day{day}.txt";
         switch (day)
         {
-            case 0: Result(Day1()); break;
+            case 1: Result(Day1(inputfile)); break;
         }
 
     }
