@@ -64,15 +64,20 @@ public partial class DayUI : Control
         }
     }
 
-    public void RunDay(int day)
+    public void EndDay()
     {
-        string inputfile = $"inputs/day{day}.txt";
         for (int i = 0; i < root.GetChildCount(); i++)
         {
             root.GetChild(i).QueueFree();
         }
         _coroutine = null;
         _coroutineDelay = 0;
+    }
+
+    public void RunDay(int day)
+    {
+        EndDay();
+        string inputfile = $"inputs/day{day}.txt";
         switch (day)
         {
             case 1: StartCoroutine(Day1(inputfile)); break;

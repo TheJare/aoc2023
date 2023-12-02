@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Godot;
-using System.Collections.Generic;
 
 public partial class DayUI
 {
@@ -12,9 +9,10 @@ public partial class DayUI
     {
         // var lines = ReadLinesSkipEmpty("test.txt");
         var lines = ReadLinesSkipEmpty(inputfile);
+        int displayEvery = lines.Length / 100;
         int r1 = 0;
         int r2 = 0;
-        foreach (var l in lines)
+        foreach (var (l, lineIndex) in lines.Select((l, i) => (l, i)))
         {
             var g = l.Split(new char[] { ':', ';', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
             int index = g[1].ToInt();
@@ -48,11 +46,15 @@ public partial class DayUI
                 tw.Parallel().TweenProperty(text, "outline_modulate", destColor, 0.3);
                 tw.TweenCallback(Callable.From(text.QueueFree));
             }
-            createText(maxr, 12, Colors.Red, -1f);
-            createText(maxg, 13, Colors.Green, 0);
-            createText(maxb, 14, Colors.Blue, 1f);
-            Result(r1, r2);
-            yield return 0f;
+            if (lineIndex % displayEvery == 0)
+            {
+                createText(maxr, 12, Colors.Red, -1f);
+                createText(maxg, 13, Colors.Green, 0);
+                createText(maxb, 14, Colors.Blue, 1f);
+                Result(r1, r2);
+                yield return 0.05f;
+            }
         }
+        Result(r1, r2);
     }
 }

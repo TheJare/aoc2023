@@ -18,6 +18,7 @@ func go_to(screen: Control):
     screen.show()
 
 func go_to_main():
+    %DayUI.EndDay()
     go_to(%MainMenu)
     %MenuDecoration.show();
 
