@@ -1,12 +1,14 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Godot;
+using System.Collections.Generic;
 
 public partial class DayUI
 {
-    (int, int) Day2(string inputfile)
+    IEnumerator Day2(string inputfile)
     {
         // var lines = ReadLinesSkipEmpty("test.txt");
         var lines = ReadLinesSkipEmpty(inputfile);
@@ -27,7 +29,8 @@ public partial class DayUI
             }
             if (maxr <= 12 && maxg <= 13 && maxb <= 14) r1 += index;
             r2 += maxr * maxg * maxb;
+            Result(r1, r2);
+            yield return 0f;
         }
-        return (r1, r2);
     }
 }
