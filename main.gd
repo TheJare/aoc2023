@@ -19,8 +19,10 @@ func go_to(screen: Control):
 
 func go_to_main():
     go_to(%MainMenu)
+    %MenuDecoration.show();
 
 func go_to_day(day: int):
     go_to(%DayUI)
+    %MenuDecoration.hide();
     %DayUI.Result("-- part 1 --", "-- part 2 --")
     %DayUI.RunDay(day)

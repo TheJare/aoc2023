@@ -26,7 +26,7 @@ sky_material = SubResource("PanoramaSkyMaterial_kkl7y")
 background_mode = 1
 background_color = Color(0.356863, 0.419608, 0.345098, 1)
 sky = SubResource("Sky_afq0i")
-ambient_light_color = Color(0.701961, 0.235294, 0.490196, 1)
+ambient_light_color = Color(0.0980392, 0.290196, 0.176471, 1)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -37,13 +37,14 @@ roughness = 0.3
 
 [sub_resource type="BoxMesh" id="BoxMesh_kisac"]
 material = SubResource("StandardMaterial3D_glqp3")
+size = Vector3(2, 2, 2)
 
 [sub_resource type="SystemFont" id="SystemFont_pwrut"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f3ghw"]
 font = SubResource("SystemFont_pwrut")
 font_size = 110
-font_color = Color(0.517647, 0.584314, 0.690196, 1)
+font_color = Color(0.901961, 0.858824, 0.937255, 1)
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 20
@@ -65,15 +66,20 @@ environment = SubResource("Environment_mx5yl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.413391, -0.910554, 0, 0.910554, 0.413391, 3.06353, -0.789876, 0.0933049)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.968148, 0.25038, 0, -0.25038, 0.968148, 0, 1.505, 3.638)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MenuDecoration" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 mesh = SubResource("BoxMesh_kisac")
 script = ExtResource("1_eg7te")
 speed = Vector3(59.315, 23.525, -33.52)
+
+[node name="VizRoot" type="Node3D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -106,26 +112,22 @@ horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CanvasGroup/MainMenu"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -625.0
-offset_top = -142.5
-offset_right = 625.0
-offset_bottom = 142.5
+offset_left = -605.0
+offset_top = 140.0
+offset_right = 605.0
+offset_bottom = 710.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 65
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 65
-theme_override_constants/margin_bottom = 50
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 110
+theme_override_constants/h_separation = 105
 theme_override_constants/v_separation = 35
 columns = 5
 
@@ -142,18 +144,136 @@ layout_mode = 2
 text = "Day 3"
 
 [node name="Button4" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
 layout_mode = 2
 text = "Day 4"
 
 [node name="Button5" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
 layout_mode = 2
 text = "Day 5"
 
 [node name="Button6" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
 layout_mode = 2
 text = "Day 6"
 
-[node name="DayUI" type="Control" parent="CanvasLayer/CanvasGroup" node_paths=PackedStringArray("_labelR1", "_labelR2")]
+[node name="Button7" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 7"
+
+[node name="Button8" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 8"
+
+[node name="Button9" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 9"
+
+[node name="Button10" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 10"
+
+[node name="Button11" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 11"
+
+[node name="Button12" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 12"
+
+[node name="Button13" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 13"
+
+[node name="Button14" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 14"
+
+[node name="Button15" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 15"
+
+[node name="Button16" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 16"
+
+[node name="Button17" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 17"
+
+[node name="Button18" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 18"
+
+[node name="Button19" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 19"
+
+[node name="Button20" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 20"
+
+[node name="Button21" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 21"
+
+[node name="Button22" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 22"
+
+[node name="Button23" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 23"
+
+[node name="Button24" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 24"
+
+[node name="Button25" type="Button" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+visible = false
+layout_mode = 2
+text = "Day 25"
+
+[node name="DummyLabelToAvoidClipping" type="Label" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+text = " "
+
+[node name="DummyLabelToAvoidClipping2" type="Label" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+text = " "
+
+[node name="DummyLabelToAvoidClipping3" type="Label" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+text = " "
+
+[node name="DummyLabelToAvoidClipping4" type="Label" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+text = " "
+
+[node name="DummyLabelToAvoidClipping5" type="Label" parent="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+text = " "
+
+[node name="DayUI" type="Control" parent="CanvasLayer/CanvasGroup" node_paths=PackedStringArray("_labelR1", "_labelR2", "root")]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -169,6 +289,7 @@ theme = ExtResource("3_rnfay")
 script = ExtResource("4_iblm5")
 _labelR1 = NodePath("Panel/r1")
 _labelR2 = NodePath("Panel/r2")
+root = NodePath("../../../VizRoot")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/CanvasGroup/DayUI"]
 layout_mode = 1
@@ -213,4 +334,16 @@ text = "result 2"
 
 [connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button1" to="." method="go_to_day" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button2" to="." method="go_to_day" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button3" to="." method="go_to_day" binds= [3]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button4" to="." method="go_to_day" binds= [4]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button5" to="." method="go_to_day" binds= [5]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button6" to="." method="go_to_day" binds= [6]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button7" to="." method="go_to_day" binds= [7]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button8" to="." method="go_to_day" binds= [8]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button12" to="." method="go_to_day" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button13" to="." method="go_to_day" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button17" to="." method="go_to_day" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button18" to="." method="go_to_day" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button22" to="." method="go_to_day" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/CanvasGroup/MainMenu/MarginContainer/GridContainer/Button23" to="." method="go_to_day" binds= [2]]
 [connection signal="pressed" from="CanvasLayer/CanvasGroup/DayUI/Panel/Button" to="." method="go_to_main"]

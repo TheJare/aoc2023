@@ -29,6 +29,28 @@ public partial class DayUI
             }
             if (maxr <= 12 && maxg <= 13 && maxb <= 14) r1 += index;
             r2 += maxr * maxg * maxb;
+
+            void createText(int val, int max, Color color, float x)
+            {
+                bool ok = val <= max;
+                var text = new Label3D
+                {
+                    Text = val.ToString(),
+                    Modulate = ok ? color : Colors.White,
+                    Position = new Vector3(x, 0, 2.5f),
+                    FontSize = 100
+                };
+                root.AddChild(text);
+                Tween tw = text.CreateTween();
+                tw.TweenProperty(text, "position", new Vector3(text.Position.X, text.Position.Y, text.Position.Z - 8f), 0.5);
+                Color destColor = new(color.R, color.G, color.B, 0);
+                tw.Parallel().TweenProperty(text, "modulate", destColor, 0.5);
+                tw.Parallel().TweenProperty(text, "outline_modulate", destColor, 0.3);
+                tw.TweenCallback(Callable.From(text.QueueFree));
+            }
+            createText(maxr, 12, Colors.Red, -1f);
+            createText(maxg, 13, Colors.Green, 0);
+            createText(maxb, 14, Colors.Blue, 1f);
             Result(r1, r2);
             yield return 0f;
         }

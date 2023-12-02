@@ -12,6 +12,9 @@ public partial class DayUI : Control
     [Export]
     Label _labelR2;
 
+    [Export]
+    protected Node3D root;
+
     IEnumerator _coroutine;
     float _coroutineDelay;
     protected float CoDeltaTime = 0;
@@ -51,7 +54,7 @@ public partial class DayUI : Control
                 CoDeltaTime = delta;
                 if (_coroutine.MoveNext())
                 {
-                    float.TryParse(_coroutine.Current.ToString(), out _coroutineDelay);
+                    float.TryParse(_coroutine.Current?.ToString(), out _coroutineDelay);
                 }
                 else
                 {
@@ -64,6 +67,10 @@ public partial class DayUI : Control
     public void RunDay(int day)
     {
         string inputfile = $"inputs/day{day}.txt";
+        for (int i = 0; i < root.GetChildCount(); i++)
+        {
+            root.GetChild(i).QueueFree();
+        }
         _coroutine = null;
         _coroutineDelay = 0;
         switch (day)
