@@ -44,6 +44,7 @@ public partial class DayUI : Control
         switch (day)
         {
             case 1: Result(Day1(inputfile)); break;
+            case 2: Result(Day2(inputfile)); break;
         }
 
     }

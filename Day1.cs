@@ -42,7 +42,6 @@ public partial class DayUI
                 var d = whichDigit(l[j..]);
                 if (d >= 0) { v += d; break; }
             }
-            Debug.WriteLine($"{v}");
             r2 += v;
         }
         return (r1, r2);

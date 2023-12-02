@@ -2,7 +2,7 @@
 
 See [Advent of Code site](https://adventofcode.com/2023).
 
-Using Godot to motivate me to do some visualization. We'll see.
+Using [Godot Engine 4.2](https://godotengine.org/) to motivate me to do some visualization. We'll see.
 
 Find this project at https://github.com/TheJare/aoc2023
 
