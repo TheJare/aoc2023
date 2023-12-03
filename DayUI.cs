@@ -25,9 +25,10 @@ public partial class DayUI : Control
         _coroutineDelay = 0;
     }
 
-    private static string[] ReadLinesSkipEmpty(string file)
+    private static string[] ReadLinesSkipEmpty(string filePath)
     {
-        var lines = File.ReadAllLines(file);
+        using var file = Godot.FileAccess.Open("res://" + filePath, Godot.FileAccess.ModeFlags.Read);
+        string[] lines = file.GetAsText(true).Split('\n');
         return lines.Select(l => l.Trim()).Where(l => l.Length > 0).ToArray();
     }
 

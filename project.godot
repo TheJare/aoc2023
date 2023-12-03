@@ -27,3 +27,7 @@ window/ios/allow_high_refresh_rate=false
 [dotnet]
 
 project/assembly_name="aoc2023"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

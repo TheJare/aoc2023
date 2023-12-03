@@ -24,7 +24,7 @@ sky_material = SubResource("PanoramaSkyMaterial_kkl7y")
 
 [sub_resource type="Environment" id="Environment_mx5yl"]
 background_mode = 1
-background_color = Color(0.356863, 0.419608, 0.345098, 1)
+background_color = Color(0.0862745, 0.113725, 0.0823529, 1)
 sky = SubResource("Sky_afq0i")
 ambient_light_color = Color(0.0980392, 0.290196, 0.176471, 1)
 tonemap_mode = 2
@@ -52,7 +52,7 @@ shadow_color = Color(0, 0, 0, 0.490196)
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v5r4"]
-bg_color = Color(0, 0, 0, 0.156863)
+bg_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 70
 corner_radius_top_right = 70
 corner_radius_bottom_right = 70
