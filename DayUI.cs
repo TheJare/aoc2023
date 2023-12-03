@@ -82,6 +82,7 @@ public partial class DayUI : Control
         {
             case 1: StartCoroutine(Day1(inputfile)); break;
             case 2: StartCoroutine(Day2(inputfile)); break;
+            case 3: StartCoroutine(Day3(inputfile)); break;
         }
 
     }
