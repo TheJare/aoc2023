@@ -6,6 +6,8 @@ Using [Godot Engine 4.2](https://godotengine.org/) to motivate me to do some vis
 
 Find this project at https://github.com/TheJare/aoc2023
 
+**Fira Code font**: Copyright (c) 2014, The Fira Code Project Authors (https://github.com/tonsky/FiraCode). Used under the SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+
 # The MIT License (MIT)
 
 Copyright © 2023 Javier Arévalo

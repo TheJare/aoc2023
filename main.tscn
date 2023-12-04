@@ -152,7 +152,6 @@ layout_mode = 2
 text = "Day 3"
 
 [node name="Button4" type="Button" parent="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer"]
-visible = false
 layout_mode = 2
 text = "Day 4"
 
