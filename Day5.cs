@@ -17,7 +17,11 @@ public partial class DayUI
         var seeds = lines[0].Split(' ', StringSplitOptions.RemoveEmptyEntries).Skip(1).Select(s => long.Parse(s)).ToArray();
         List<(long i, long n)> seedRanges = seeds.Chunk(2).Select(chunk => (chunk[0], chunk[1])).ToList();
 
-        static (long, long)[] SplitRanges(long i, long n, long to, long from, long len)
+        // Split an input range (i, n) by a conversion (to, from, len)
+        // Yields three (i, n) subranges: left, middle (converted) and right
+        // Each subrange is only valid if its n is > 0, so the usable result is
+        // between 1 and 3 usable subranges. The middle one, if valid, is converted
+        static (long, long)[] SplitRange(long i, long n, long to, long from, long len)
         {
             (long a, long b)[] r = new (long, long)[3];
             r[0] = (i, Math.Min(i + n, from));
@@ -50,7 +54,7 @@ public partial class DayUI
                 }
 
                 // Part 2. Ok
-                List<(long i, long n)> newRanges = new();
+                List<(long i, long n)> newRanges = new(seedRanges.Count);
                 for (int j = 0; j < seedRanges.Count; j++)
                 {
                     var (i, n) = seedRanges[j];
@@ -58,22 +62,42 @@ public partial class DayUI
                     for (int k = 0; k < conversions.Count; ++k)
                     {
                         var (to, from, len) = conversions[k];
-                        (long i, long n)[] split = SplitRanges(i, n, to, from, len);
+                        (long i, long n)[] split = SplitRange(i, n, to, from, len);
                         if (split[0].n > 0 && split[0].n < n)
                         {
+                            // Subrange to the left of the conversion when original
+                            // range does get split by the conversion: add to the tail
+                            // of list of ranges to check so it goes through later conversions
                             seedRanges.Add(split[0]);
-                        }
-                        if (split[1].n > 0)
-                        {
-                            newRanges.Add(split[1]);
-                            intact = false;
                         }
                         if (split[2].n > 0 && split[2].n < n)
                         {
+                            // Subrange to the right of the conversion after a split
                             seedRanges.Add(split[2]);
                         }
+                        if (split[1].n > 0)
+                        {
+                            // Converted subrange gets transferred to the list of ranges
+                            // in the destination space
+                            newRanges.Add(split[1]);
+                            intact = false;
+                            break;
+                        }
                     }
+                    // If range didn't suffer any conversion, let it pass intact
                     if (intact) newRanges.Add((i, n));
+                }
+                // Sort and coalesce converted ranges
+                // Turns out this doesn't help much, ends with 48 ranges vs 116
+                // Hopefully will be nice for visualization.
+                newRanges.Sort((a, b) => Math.Sign(a.i - b.i));
+                for (int j = newRanges.Count - 2; j >= 0; --j)
+                {
+                    if (newRanges[j].i + newRanges[j].n >= newRanges[j + 1].i)
+                    {
+                        newRanges[j] = (newRanges[j].i, newRanges[j + 1].i + newRanges[j + 1].n - newRanges[j].i);
+                        newRanges.RemoveAt(j + 1);
+                    }
                 }
                 seedRanges = newRanges;
 
