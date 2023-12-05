@@ -32,6 +32,14 @@ public partial class DayUI : Control
         return lines.Select(l => l.Trim()).Where(l => l.Length > 0).ToArray();
     }
 
+
+    private static string[] ReadLines(string filePath)
+    {
+        using var file = Godot.FileAccess.Open("res://" + filePath, Godot.FileAccess.ModeFlags.Read);
+        string[] lines = file.GetAsText(true).Split('\n');
+        return lines.Select(l => l.Trim()).ToArray();
+    }
+
     public void Result(string s1, string s2)
     {
         if (s1 != null) _labelR1.Text = s1;
@@ -85,6 +93,7 @@ public partial class DayUI : Control
             case 2: StartCoroutine(Day2(inputfile)); break;
             case 3: StartCoroutine(Day3(inputfile)); break;
             case 4: StartCoroutine(Day4(inputfile)); break;
+            case 5: StartCoroutine(Day5(inputfile)); break;
         }
 
     }
