@@ -22,10 +22,10 @@ public partial class DayUI
             // distance(t, totalt) = t(totalt-t) = 0 + totalt*t - t*t
             // Solve the roots t of 0 = distance(t, time) - distance
             // The ways to win are all the integers between the two
-            float rootK = Mathf.Sqrt(time * time - 4f * dist);
-            int t0 = Mathf.FloorToInt((time + rootK) / 2);
-            int t1 = Mathf.FloorToInt((time - rootK) / 2);
-            return t0 - t1;
+            double rootK = Mathf.Sqrt(time * time - 4.0 * dist);
+            int t0 = Mathf.FloorToInt((time - rootK) / 2) + 1;
+            int t1 = Mathf.CeilToInt((time + rootK) / 2);
+            return t1 - t0;
         }
 
         // Part 1
