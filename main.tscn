@@ -165,7 +165,6 @@ layout_mode = 2
 text = "Day 6"
 
 [node name="Button7" type="Button" parent="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer"]
-visible = false
 layout_mode = 2
 text = "Day 7"
 
@@ -329,9 +328,9 @@ text = "result 1"
 [node name="r2" type="Label" parent="CanvasLayer/UI/DayUI/Panel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 332.0
+offset_left = 544.0
 offset_top = 50.0
-offset_right = 512.0
+offset_right = 724.0
 offset_bottom = 117.0
 mouse_filter = 1
 text = "result 2"
