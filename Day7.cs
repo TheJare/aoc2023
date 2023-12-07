@@ -36,29 +36,17 @@ public partial class DayUI
                     bid = play[1].ToInt()
                 };
                 char[] cards = p.hand.ToCharArray();
-                p.value = 0;
-                p.type = 0;
+                Array.Sort(cards);
                 int numJ = 0;
-                for (int i = 0; i < 5; ++i)
+                for (int i = 0, numRepeats = 0; i < 5; ++i)
                 {
                     p.value = p.value * cardRanks.Length + cardRanks.IndexOf(p.hand[i]);
                     if (cards[i] == joker) numJ++;
-                    else if (cards[i] != '.')
-                    {
-                        int numRepeats = 0;
-                        for (int j = i + 1; j < 5; j++)
-                        {
-                            if (cards[i] == cards[j])
-                            {
-                                numRepeats++;
-                                cards[j] = '.';
-                            }
-                        }
-                        p.type += numRepeats >= 2 ? (1 << numRepeats) : numRepeats;
-                    }
+                    else if (i > 0 && cards[i] == cards[i - 1]) { numRepeats++; if (i < 4) continue; }
+                    p.type += numRepeats >= 2 ? (1 << numRepeats) : numRepeats;
+                    numRepeats = 0;
                 }
-                if (p.type == 8) p.type <<= numJ;
-                else if (p.type == 4) p.type <<= numJ;
+                if (p.type >= 4) p.type <<= numJ;
                 else if (p.type == 2 && numJ == 1) p.type = 5;
                 else if (p.type == 1 && numJ > 0) p.type <<= (numJ + 1);
                 else if (p.type == 0) p.type = numJ >= 2 ? (1 << Math.Min(numJ, 4)) : numJ;
