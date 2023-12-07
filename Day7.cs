@@ -10,7 +10,7 @@ public partial class DayUI
     {
         public string hand;
         public int bid;
-        public int type; // higher is better. 0 = high card; 1 = pair, 2 = two pairs, 4 = three, 5 = house, 8 = 4 of a kind, 16 = 5 of a kind
+        public int type; // higher is better. 0 = high card; 1 = pair, 2 = two pairs, 4 = three, 5 = house, 16 = 4 of a kind, 64 = 5 of a kind
         public int value; // if types are equal, higher value wins
         public override readonly string ToString() { return $"{hand} {bid} {type} {value}"; }
     };
@@ -43,13 +43,12 @@ public partial class DayUI
                     p.value = p.value * cardRanks.Length + cardRanks.IndexOf(p.hand[i]);
                     if (cards[i] == joker) numJ++;
                     else if (i > 0 && cards[i] == cards[i - 1]) { numRepeats++; if (i < 4) continue; }
-                    p.type += numRepeats >= 2 ? (1 << numRepeats) : numRepeats;
+                    p.type += (1 << (numRepeats * 2)) >> 2;
                     numRepeats = 0;
                 }
-                if (p.type >= 4) p.type <<= numJ;
-                else if (p.type == 2 && numJ == 1) p.type = 5;
-                else if (p.type == 1 && numJ > 0) p.type <<= (numJ + 1);
-                else if (p.type == 0) p.type = numJ >= 2 ? (1 << Math.Min(numJ, 4)) : numJ;
+                if (p.type == 0) p.type = (1 << (Math.Min(4, numJ) * 2)) >> 2;
+                else if (p.type == 2 && numJ > 0) p.type = 5;
+                else p.type <<= numJ * 2;
                 plays[lineIndex] = p;
             }
             Array.Sort(plays, (a, b) => Math.Sign(a.type * MaxHandValue + a.value - (b.type * MaxHandValue + b.value)));
