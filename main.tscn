@@ -173,7 +173,6 @@ layout_mode = 2
 text = "Day 8"
 
 [node name="Button9" type="Button" parent="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer"]
-visible = false
 layout_mode = 2
 text = "Day 9"
 
@@ -342,6 +341,7 @@ text = "result 2"
 [connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button6" to="." method="go_to_day" binds= [6]]
 [connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button7" to="." method="go_to_day" binds= [7]]
 [connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button8" to="." method="go_to_day" binds= [8]]
+[connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button9" to="." method="go_to_day" binds= [9]]
 [connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button12" to="." method="go_to_day" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button13" to="." method="go_to_day" binds= [2]]
 [connection signal="pressed" from="CanvasLayer/UI/MainMenu/MarginContainer/GridContainer/Button17" to="." method="go_to_day" binds= [1]]
