@@ -104,7 +104,7 @@ public partial class DayUI
                 conversions.Clear();
                 r1 = seeds.Min();
                 r2 = seedRanges.Select(e => e.i).Min();
-                Result(r1.ToString(), r2.ToString());
+                Result(r1, r2);
                 yield return null;
             }
             else

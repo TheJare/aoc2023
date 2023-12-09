@@ -15,6 +15,8 @@ public partial class DayUI : Control
     [Export]
     protected Node3D root;
 
+    // Roll-your-own coroutine
+
     IEnumerator _coroutine;
     float _coroutineDelay;
     protected float CoDeltaTime = 0;
@@ -23,33 +25,6 @@ public partial class DayUI : Control
     {
         _coroutine = c;
         _coroutineDelay = 0;
-    }
-
-    private static string[] ReadLinesSkipEmpty(string filePath)
-    {
-        using var file = Godot.FileAccess.Open("res://" + filePath, Godot.FileAccess.ModeFlags.Read);
-        string[] lines = file.GetAsText(true).Split('\n');
-        return lines.Select(l => l.Trim()).Where(l => l.Length > 0).ToArray();
-    }
-
-
-    private static string[] ReadLines(string filePath)
-    {
-        using var file = Godot.FileAccess.Open("res://" + filePath, Godot.FileAccess.ModeFlags.Read);
-        string[] lines = file.GetAsText(true).Split('\n');
-        return lines.Select(l => l.Trim()).ToArray();
-    }
-
-    public void Result(string s1, string s2)
-    {
-        if (s1 != null) _labelR1.Text = s1;
-        if (s2 != null) _labelR2.Text = s2;
-    }
-
-
-    void Result(int? i1, int? i2)
-    {
-        Result(i1?.ToString(), i2?.ToString());
     }
 
     public override void _Process(double ddelta)
@@ -71,6 +46,50 @@ public partial class DayUI : Control
                 }
             }
         }
+    }
+
+    // General purpose utilities
+
+    private static string[] ReadLinesSkipEmpty(string filePath)
+    {
+        using var file = Godot.FileAccess.Open("res://" + filePath, Godot.FileAccess.ModeFlags.Read);
+        string[] lines = file.GetAsText(true).Split('\n');
+        return lines.Select(l => l.Trim()).Where(l => l.Length > 0).ToArray();
+    }
+
+    private static string[] ReadLines(string filePath)
+    {
+        using var file = Godot.FileAccess.Open("res://" + filePath, Godot.FileAccess.ModeFlags.Read);
+        string[] lines = file.GetAsText(true).Split('\n');
+        return lines.Select(l => l.Trim()).ToArray();
+    }
+
+    static long GCF(long a, long b)
+    {
+        while (b != 0)
+        {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+    static long LCM(long a, long b)
+    {
+        return a / GCF(a, b) * b;
+    }
+
+    // Solution handling
+
+    public void Result(string s1, string s2)
+    {
+        if (s1 != null) _labelR1.Text = s1;
+        if (s2 != null) _labelR2.Text = s2;
+    }
+
+    void Result(long? i1, long? i2)
+    {
+        Result(i1?.ToString(), i2?.ToString());
     }
 
     public void EndDay()
@@ -96,6 +115,7 @@ public partial class DayUI : Control
             case 5: StartCoroutine(Day5(inputfile)); break;
             case 6: StartCoroutine(Day6(inputfile)); break;
             case 7: StartCoroutine(Day7(inputfile)); break;
+            case 8: StartCoroutine(Day8(inputfile)); break;
         }
 
     }
